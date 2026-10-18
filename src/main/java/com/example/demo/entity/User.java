@@ -15,11 +15,9 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	// The Google account email (users sign in with Google only)
 	@Column(nullable = false, unique = true)
 	private String username;
-
-	@Column(name = "password_hash", nullable = false)
-	private String passwordHash;
 
 	protected User() {
 	}
@@ -30,10 +28,6 @@ public class User {
 
 	public String getUsername() {
 		return username;
-	}
-
-	public String getPasswordHash() {
-		return passwordHash;
 	}
 
 }

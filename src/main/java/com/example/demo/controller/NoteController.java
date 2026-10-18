@@ -56,7 +56,7 @@ public class NoteController {
 		noteService.deleteNote(userId(jwt), id);
 	}
 
-	// The login token's subject is the user's id (set in AuthService)
+	// The login token's subject is the user's id (set in TokenService)
 	private static Long userId(Jwt jwt) {
 		return Long.valueOf(jwt.getSubject());
 	}
