@@ -26,6 +26,10 @@ public class SecurityConfig {
 	private final SecretKey key;
 
 	public SecurityConfig(@Value("${jwt.secret}") String secret) {
+		if (secret.getBytes(StandardCharsets.UTF_8).length < 32) {
+			throw new IllegalStateException(
+					"jwt.secret must be at least 32 characters: set it in secrets.properties or the JWT_SECRET environment variable");
+		}
 		this.key = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
 	}
 
